@@ -13,6 +13,7 @@ params:
     advanced: true
   - name: capacity
     advanced: true
+  - name: maxacpower
 render: |
   type: custom
   power:
@@ -22,6 +23,7 @@ render: |
     {{- end }}
     {{- if eq .usage "pv" }}
     uri: http://{{ .host }}/rest/channel/_sum/ProductionActivePower
+    maxacpower: {{ .maxacpower }} # W
     {{- end }}
     {{- if eq .usage "battery" }}
     uri: http://{{ .host }}/rest/channel/_sum/EssDischargePower
